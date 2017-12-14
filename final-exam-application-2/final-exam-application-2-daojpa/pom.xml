@@ -9,9 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>final-exam-application-2-service</artifactId>
-
-	<packaging>war</packaging>
+	<artifactId>final-exam-application-2-daojpa</artifactId>
 
 	<dependencies>
 		<dependency>
@@ -24,23 +22,14 @@
 		</dependency>
 		<dependency>
 			<groupId>hu.icell.javaeetraining</groupId>
-			<artifactId>final-exam-application-2-dto</artifactId>
+			<artifactId>final-exam-application-2-dao</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>hu.icell.javaeetraining</groupId>
-			<artifactId>final-exam-application-2-dao</artifactId>
+			<artifactId>final-exam-application-2-proxy</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 
 </project>

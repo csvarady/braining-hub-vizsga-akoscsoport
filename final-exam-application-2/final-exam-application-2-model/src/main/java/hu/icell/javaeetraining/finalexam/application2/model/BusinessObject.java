@@ -3,6 +3,8 @@ package hu.icell.javaeetraining.finalexam.application2.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -15,7 +17,8 @@ public class BusinessObject implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="ID") //insert="false" update="false")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
 	private Integer id;
 
 	public Integer getId() {

@@ -7,7 +7,6 @@ import hu.icell.javaeetraining.finalexam.application2.dto.TodoDTO;
 
 public interface TodoService {
 
-	
 	Integer createTodo(TodoDTO todo);
 	
 	void deleteTodo(Integer id);
