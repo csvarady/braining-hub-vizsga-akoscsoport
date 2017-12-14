@@ -2,27 +2,23 @@
 iCell tagok BrainingHub záró vizsgafeladata. Tóth Ákos csapata.
 
 Csapattagok:
-Tóth Ákos
-Rozs Róbert Zsolt
-Várady Csaba
-Szabó Gábor
-Zrínyi András
+1.) Tóth Ákos
+2.) Rozs Róbert Zsolt
+3.) Várady Csaba
+4.) Szabó Gábor
+5.) Zrínyi András
 
---teszt
 
-Tóth Ákos hozzájárulásai:
+1.) Tóth Ákos hozzájárulásai:
 - DAO-JPA implementáció : final-exam-application-2-daojpa
 - Proxy réteg (Entity <--> DTO konverziók) : final-exam-application-2-proxy
 
-Rozs Róbert Zsolt hozzájárulásai:
+2.) Rozs Róbert Zsolt hozzájárulásai:
 - Github repo, Maven dependency settings
 - DAO interface réteg : final-exam-application-2-dto
 - Proxy réteg (Entity <--> DTO konverziók) : final-exam-application-2-proxy
 - REST Service, végpont definíciók : final-exam-application-2-service
 
-Várady Csaba hozzájárulásai:
+3.) Várady Csaba hozzájárulásai:
 - Proxy réteg (Entity <--> DTO konverziók) : final-exam-application-2-proxy
 - REST Service, végpont definíciók : final-exam-application-2-service
-
-
-
