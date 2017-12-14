@@ -8,6 +8,7 @@ Várady Csaba
 Szabó Gábor
 Zrínyi András
 
+--teszt
 
 Tóth Ákos hozzájárulásai:
 - DAO-JPA implementáció : final-exam-application-2-daojpa
