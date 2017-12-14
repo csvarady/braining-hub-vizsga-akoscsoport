@@ -2,6 +2,8 @@ package hu.icell.javaeetraining.finalexam.application2.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
@@ -12,6 +14,8 @@ public class BusinessObject implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@Column(name="ID") //insert="false" update="false")
 	private Integer id;
 
 	public Integer getId() {

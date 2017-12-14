@@ -9,7 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>final-exam-application-2-model</artifactId>
+	<artifactId>final-exam-application-2-dao</artifactId>
 
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/javax/javaee-api -->
