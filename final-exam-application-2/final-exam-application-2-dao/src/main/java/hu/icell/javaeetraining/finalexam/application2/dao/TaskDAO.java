@@ -1,7 +1,7 @@
 package hu.icell.javaeetraining.finalexam.application2.dao;
 
-import hu.icell.javaeetraining.finalexam.application2.model.Task;
+import hu.icell.javaeetraining.finalexam.application2.dto.TaskDTO;
 
-public interface TaskDAO extends BaseDAO<Task, Integer/*ID*/> {	
+public interface TaskDAO extends BaseDAO<TaskDTO, Integer/*ID*/> {	
 
 }

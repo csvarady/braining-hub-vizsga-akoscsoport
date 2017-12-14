@@ -23,7 +23,7 @@
 		</dependency>
 		<dependency>
 			<groupId>hu.icell.javaeetraining</groupId>
-			<artifactId>final-exam-application-2-model</artifactId>
+			<artifactId>final-exam-application-2-dto</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>

@@ -3,9 +3,9 @@ package hu.icell.javaeetraining.finalexam.application2.dao;
 import java.io.Serializable;
 import java.util.List;
 
-import hu.icell.javaeetraining.finalexam.application2.model.BusinessObject;
+import hu.icell.javaeetraining.finalexam.application2.dto.BaseDTO;
 
-public interface BaseDAO<T extends BusinessObject, ID extends Serializable> {
+public interface BaseDAO<T extends BaseDTO, ID extends Serializable> {
 
 		void persist(T object);
 		
