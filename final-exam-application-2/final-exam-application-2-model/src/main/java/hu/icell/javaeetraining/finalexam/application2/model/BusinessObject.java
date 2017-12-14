@@ -2,6 +2,9 @@ package hu.icell.javaeetraining.finalexam.application2.model;
 
 import java.io.Serializable;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public class BusinessObject implements Serializable {
 
 	/**

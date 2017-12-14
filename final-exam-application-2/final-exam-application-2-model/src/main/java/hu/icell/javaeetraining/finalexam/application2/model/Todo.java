@@ -3,6 +3,13 @@ package hu.icell.javaeetraining.finalexam.application2.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TODO")
+@NamedQuery(name="Todo.findAll", query="SELECT t FROM Todo t")
 public class Todo extends BusinessObject{
 
 	

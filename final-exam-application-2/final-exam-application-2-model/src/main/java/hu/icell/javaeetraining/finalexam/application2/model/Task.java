@@ -1,5 +1,12 @@
 package hu.icell.javaeetraining.finalexam.application2.model;
 
+import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="TASK")
+@NamedQuery(name="Task.findAll", query="SELECT t FROM Task t")
 public class Task extends BusinessObject {
 
 	/**
