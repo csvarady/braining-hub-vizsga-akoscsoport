@@ -5,6 +5,8 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.ws.rs.Consumes;
@@ -24,7 +26,8 @@ import hu.icell.javaeetraining.finalexam.application2.dto.TodoDTO;
 
 @Path("/todo")
 @Named
-@RequestScoped
+@ApplicationScoped
+//@Stateless
 public class TodoTaskProxy {
 
 	@Context

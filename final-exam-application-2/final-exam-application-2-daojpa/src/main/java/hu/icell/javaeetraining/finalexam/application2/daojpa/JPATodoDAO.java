@@ -2,6 +2,7 @@ package hu.icell.javaeetraining.finalexam.application2.daojpa;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -30,8 +31,11 @@ public class JPATodoDAO implements TodoDAO {
 	}
 
 	public void delete(TodoDTO object) {
-		Todo Todo = proxy.DTOToEntity(object);
-		em.remove(Todo);
+		//Todo Todo = proxy.DTOToEntity(object);
+		Todo todo = em.find(Todo.class, object.getId());
+		if (em.contains(todo)) {
+			em.remove(todo);
+		}
 	}
 
 	public List<TodoDTO> getAll() {

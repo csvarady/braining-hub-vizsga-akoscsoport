@@ -2,6 +2,7 @@ package hu.icell.javaeetraining.finalexam.application2.daojpa;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -9,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import hu.icell.javaeetraining.finalexam.application2.dao.TaskDAO;
 import hu.icell.javaeetraining.finalexam.application2.dto.TaskDTO;
 import hu.icell.javaeetraining.finalexam.application2.model.Task;
+import hu.icell.javaeetraining.finalexam.application2.model.Todo;
 import hu.icell.javaeetraining.finalexam.application2.proxy.TaskWebProxy;
 
 
@@ -23,6 +25,11 @@ public class JPATaskDAO implements TaskDAO {
 	public void persist(TaskDTO object) {
 		Task task = proxy.DTOToEntity(object);
 		em.persist(task);
+		
+		Todo todo = em.find(Todo.class, object.getTodoId());
+		List<Task> tasks = todo.getTasks();
+		tasks.add(task);
+		em.merge(todo);
 	}
 
 	public void update(TaskDTO object) {
@@ -42,7 +49,7 @@ public class JPATaskDAO implements TaskDAO {
 			tasks.add(proxy.entityToDTO(task));
 		});
 		
-		return tasks; 
+		return tasks;
 	}
 
 	public TaskDTO getById(Integer id) {
