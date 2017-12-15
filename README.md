@@ -13,6 +13,7 @@ Csapattagok:
 - DAO interface réteg : final-exam-application-2-dao
 - DAO-JPA implementáció : final-exam-application-2-daojpa
 - Proxy réteg (Entity <--> DTO konverziók) : final-exam-application-2-proxy
+- Deployment hiba javítás, REST korrekciók
 
 2.) Rozs Róbert Zsolt hozzájárulásai:
 - Github repo, .gitignores, Maven dependency settings
