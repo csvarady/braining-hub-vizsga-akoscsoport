@@ -27,8 +27,8 @@ public class Todo extends BusinessObject{
 	@Column(name="DESCRIPTION")
 	private String description;
 	
-	//bi-directional many-to-one association to Task
-	@OneToMany(mappedBy="todo")
+	//mono-directional one-to-many association to Task
+	@OneToMany
 	private List<Task> tasks;
 
 	public LocalDateTime getTodoDeadline() {
@@ -54,6 +54,4 @@ public class Todo extends BusinessObject{
 	public void setTasks(List<Task> tasks) {
 		this.tasks = tasks;
 	}
-	
-	
 }

@@ -13,9 +13,7 @@ public class TaskDTO extends BaseDTO {
 
 	private int priority;
 
-	// Ez itt helytelen volt, a teljes TodoDTO -t bevesszük, különben nem tudunk entitást előállítani ha csak az ID van meg.
-	//private Integer todoId;
-	private TodoDTO todoDTO;
+	private Integer todoId;
 	
 	public String getName() {
 		return name;
@@ -41,12 +39,11 @@ public class TaskDTO extends BaseDTO {
 		this.priority = priority;
 	}
 
-	public TodoDTO getTodoDTO() {
-		return todoDTO;
+	public Integer getTodoId() {
+		return todoId;
 	}
 
-	public void setTodoDTO(TodoDTO todo) {
-		this.todoDTO = todo;
+	public void setTodoId(Integer todoId) {
+		this.todoId = todoId;
 	}
-
 }

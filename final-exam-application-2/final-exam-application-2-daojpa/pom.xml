@@ -30,6 +30,11 @@
 			<artifactId>final-exam-application-2-proxy</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>hu.icell.javaeetraining</groupId>
+			<artifactId>final-exam-application-2-model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 	</dependencies>
 
 </project>
