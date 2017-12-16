@@ -5,9 +5,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -21,14 +19,15 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import hu.icell.javaeetraining.finalexam.application2.dao.TaskNotFoundException;
+import hu.icell.javaeetraining.finalexam.application2.dao.TodoNotFoundException;
 import hu.icell.javaeetraining.finalexam.application2.dto.TaskDTO;
 import hu.icell.javaeetraining.finalexam.application2.dto.TodoDTO;
 
 @Path("/todo")
 @Named
 @ApplicationScoped
-//@Stateless
-public class TodoTaskProxy {
+public class TodoTaskRestService {
 
 	@Context
 	private UriInfo uriInfo;
@@ -50,8 +49,15 @@ public class TodoTaskProxy {
 	@Path("/{todoID}")
 	public Response deleteTodo(@PathParam("todoID") Integer todoID) {
 		
-		service.deleteTodo(todoID);
-		
+		try {
+			service.deleteTodo(todoID);
+		}
+		catch (TodoNotFoundException e) {
+			return Response.status(Response.Status.NOT_FOUND)
+					.header("message", "Todo not found. todoId: "+todoID)
+					.build();
+		}
+
 		return Response.status(Response.Status.OK).entity(null).build();
 	}
 	
@@ -69,17 +75,26 @@ public class TodoTaskProxy {
 	@DELETE
 	@Path("/{todoID}/task/{taskID}")
 	public Response deleteTask(@PathParam("todoID") Integer todoID, @PathParam("taskID") Integer taskID) {
-		
-		List<TaskDTO> tasks = service.getAllTaskForTodo(todoID);
-		for (TaskDTO task : tasks) {
-			if (task.getId() == taskID) {
-				service.removeTask(taskID);
-				return Response.status(Response.Status.OK).entity(null).build();
+
+		try {
+			List<TaskDTO> tasks = service.getAllTaskForTodo(todoID);
+			if (tasks != null) {
+				for (TaskDTO task : tasks) {
+					if (task.getId().equals(taskID)) {
+						service.removeTask(taskID, todoID);
+						return Response.status(Response.Status.OK).entity(null).build();
+					}
+				}
 			}
 		}
+		catch (TaskNotFoundException e) {
+			return Response.status(Response.Status.NOT_FOUND)
+					.header("message", "Task not found. taskId: "+taskID)
+					.build();	
+		}
 
-		return Response.status(Response.Status.NOT_FOUND).
-			header("message", "No such task for this todo. todoId: "+todoID+", taskId: "+taskID)
+		return Response.status(Response.Status.NOT_FOUND)
+			.header("message", "No such task for this todo. todoId: "+todoID+", taskId: "+taskID)
 			.build();
 	}
 	

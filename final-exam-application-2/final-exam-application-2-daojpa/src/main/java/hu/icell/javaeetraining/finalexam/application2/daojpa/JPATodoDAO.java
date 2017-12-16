@@ -2,12 +2,12 @@ package hu.icell.javaeetraining.finalexam.application2.daojpa;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import hu.icell.javaeetraining.finalexam.application2.dao.TodoDAO;
+import hu.icell.javaeetraining.finalexam.application2.dao.TodoNotFoundException;
 import hu.icell.javaeetraining.finalexam.application2.dto.TodoDTO;
 import hu.icell.javaeetraining.finalexam.application2.model.Todo;
 import hu.icell.javaeetraining.finalexam.application2.proxy.TodoWebProxy;
@@ -23,6 +23,7 @@ public class JPATodoDAO implements TodoDAO {
 	public void persist(TodoDTO object) {
 		Todo Todo = proxy.DTOToEntity(object);
 		em.persist(Todo);
+		object.setId(Todo.getId());
 	}
 
 	public void update(TodoDTO object) {
@@ -30,8 +31,9 @@ public class JPATodoDAO implements TodoDAO {
 		em.merge(Todo);
 	}
 
-	public void delete(TodoDTO object) {
-		//Todo Todo = proxy.DTOToEntity(object);
+	public void delete(TodoDTO object) throws TodoNotFoundException {
+		if (object == null)
+			throw new TodoNotFoundException();
 		Todo todo = em.find(Todo.class, object.getId());
 		if (em.contains(todo)) {
 			em.remove(todo);
@@ -50,7 +52,11 @@ public class JPATodoDAO implements TodoDAO {
 
 	public TodoDTO getById(Integer id) {
 		Todo Todo = em.find(Todo.class, id);
-		
-		return proxy.entityToDTO(Todo);
+		if (Todo != null) {
+			return proxy.entityToDTO(Todo);
+		}
+		else {
+			return null;
+		}
 	}
 }

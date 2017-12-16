@@ -2,12 +2,12 @@ package hu.icell.javaeetraining.finalexam.application2.daojpa;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import hu.icell.javaeetraining.finalexam.application2.dao.TaskDAO;
+import hu.icell.javaeetraining.finalexam.application2.dao.TaskNotFoundException;
 import hu.icell.javaeetraining.finalexam.application2.dto.TaskDTO;
 import hu.icell.javaeetraining.finalexam.application2.model.Task;
 import hu.icell.javaeetraining.finalexam.application2.model.Todo;
@@ -29,7 +29,7 @@ public class JPATaskDAO implements TaskDAO {
 		Todo todo = em.find(Todo.class, object.getTodoId());
 		List<Task> tasks = todo.getTasks();
 		tasks.add(task);
-		em.merge(todo);
+		em.merge(todo);		
 	}
 
 	public void update(TaskDTO object) {
@@ -37,9 +37,16 @@ public class JPATaskDAO implements TaskDAO {
 		em.merge(task);
 	}
 
-	public void delete(TaskDTO object) {
-		Task task = proxy.DTOToEntity(object);
-		em.remove(task);
+	public void delete(TaskDTO object, Integer todoId) throws TaskNotFoundException {
+		if (object == null) {
+			throw new TaskNotFoundException();
+		}
+		Task task = em.find(Task.class, object.getId());
+		if (em.contains(task)) {
+			em.remove(task);
+		}
+		Todo todo = em.find(Todo.class, todoId);
+		todo.getTasks().remove(task);
 	}
 
 	public List<TaskDTO> getAll() {
@@ -55,6 +62,11 @@ public class JPATaskDAO implements TaskDAO {
 	public TaskDTO getById(Integer id) {
 		Task task = em.find(Task.class, id);
 		
-		return proxy.entityToDTO(task);
+		if (task != null) {
+			return proxy.entityToDTO(task);
+		}
+		else {
+			return null;
+		}
 	}
 }

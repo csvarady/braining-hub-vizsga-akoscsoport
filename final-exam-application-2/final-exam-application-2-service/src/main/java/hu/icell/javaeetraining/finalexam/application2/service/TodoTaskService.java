@@ -8,6 +8,8 @@ import javax.inject.Inject;
 
 import hu.icell.javaeetraining.finalexam.application2.dao.TaskDAO;
 import hu.icell.javaeetraining.finalexam.application2.dao.TodoDAO;
+import hu.icell.javaeetraining.finalexam.application2.dao.TodoNotFoundException;
+import hu.icell.javaeetraining.finalexam.application2.dao.TaskNotFoundException;
 import hu.icell.javaeetraining.finalexam.application2.dto.TaskDTO;
 import hu.icell.javaeetraining.finalexam.application2.dto.TodoDTO;
 
@@ -24,14 +26,13 @@ public class TodoTaskService implements TodoService {
 	public Integer createTodo(TodoDTO todo) {
 
 		todoDAO.persist(todo);
-
 		return todo.getId();
 	}
 
 	@Override
-	public void deleteTodo(Integer id) {
+	public void deleteTodo(Integer id) throws TodoNotFoundException {
 
-		todoDAO.delete(todoDAO.getById(id));
+		todoDAO.delete(todoDAO.getById(id));			
 	}
 
 	@Override
@@ -41,9 +42,9 @@ public class TodoTaskService implements TodoService {
 	}
 
 	@Override
-	public void removeTask(Integer taskId) {
+	public void removeTask(Integer taskId, Integer todoId) throws TaskNotFoundException {
 
-		taskDAO.delete(taskDAO.getById(taskId));
+		taskDAO.delete(taskDAO.getById(taskId), todoId);
 	}
 
 	@Override
@@ -56,6 +57,8 @@ public class TodoTaskService implements TodoService {
 	public List<TaskDTO> getAllTaskForTodo(Integer todoId) {
 
 		TodoDTO todoDTO = todoDAO.getById(todoId);
+		if (todoDTO == null)
+			return null;
 
 		List<Integer> taskIDs = todoDTO.getTasksIds();
 

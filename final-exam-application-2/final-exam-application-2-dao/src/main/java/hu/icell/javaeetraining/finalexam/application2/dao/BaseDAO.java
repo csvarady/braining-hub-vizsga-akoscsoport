@@ -11,8 +11,6 @@ public interface BaseDAO<T extends BaseDTO, ID extends Serializable> {
 		
 		void update(T object);
 		
-		void delete(T object);
-		
 		List<T> getAll();
 		
 		T getById(ID id);

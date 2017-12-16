@@ -8,6 +8,7 @@ public class TaskWebProxy implements BaseProxy<Task, TaskDTO> {
 	public TaskDTO entityToDTO(Task entity) {
 		TaskDTO dto = new TaskDTO();
 
+		dto.setId(entity.getId());
 		dto.setName(entity.getName());
 		dto.setDescription(entity.getDescription());
 		dto.setPriority(entity.getPriority());

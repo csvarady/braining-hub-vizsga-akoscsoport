@@ -13,13 +13,8 @@ public class TodoTaskApplication extends Application {
 	public Set<Class<?>> getClasses() {
 		
 		Set<Class<?>> classes = new HashSet<>();
-		classes.add(TodoTaskProxy.class);
+		classes.add(TodoTaskRestService.class);
 		
 		return classes;
 	}
-
-	
-	
-	
-	
 }
