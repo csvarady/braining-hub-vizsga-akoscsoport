@@ -42,7 +42,7 @@ public class TodoTaskRestService {
 		Integer todoID = service.createTodo(todo);
 
 		URI location = new URI(uriInfo.getRequestUri() + "/" + todoID);
-		return Response.status(Response.Status.CREATED).location(location).build();		
+		return Response.status(Response.Status.CREATED).location(location).build();
 	}
 
 	@DELETE
