@@ -1,4 +1,5 @@
 package hu.icell.javaeetraining.finalexam.application2.daojpa;
+
 import java.util.ArrayList;
 import java.util.List;
 
