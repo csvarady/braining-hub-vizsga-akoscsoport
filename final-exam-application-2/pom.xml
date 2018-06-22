@@ -71,7 +71,7 @@
 		<module>final-exam-application-2-dao</module>
 		<module>final-exam-application-2-daojpa</module>
 		<module>final-exam-application-2-proxy</module>
-    <module>final-exam-application-2-web</module>
+        <module>final-exam-application-2-web</module>
 	</modules>
 
 </project>
