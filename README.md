@@ -24,3 +24,10 @@ Csapattagok:
 3.) Várady Csaba hozzájárulásai:
 - Proxy réteg (Entity <--> DTO konverziók) : final-exam-application-2-proxy
 - REST Service, végpont definíciók : final-exam-application-2-service
+
+PUT localhost:8080/rest/todo híváshoz a JSON:
+
+{
+  "description": "Todo 1",
+	"taskIds": []
+}
